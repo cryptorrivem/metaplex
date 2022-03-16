@@ -25,7 +25,10 @@ import { ipfsCreds, ipfsUpload } from '../helpers/upload/ipfs';
 import { StorageType } from '../helpers/storage-type';
 import { AssetKey } from '../types';
 import { chunks, sleep } from '../helpers/various';
-import { nftStorageUpload } from '../helpers/upload/nft-storage';
+import {
+  nftStorageClient,
+  nftStorageUpload,
+} from '../helpers/upload/nft-storage';
 import { pinataUpload } from '../helpers/upload/pinata';
 import { setCollection } from './set-collection';
 
@@ -317,9 +320,7 @@ export async function uploadV2({
                   image,
                   animation,
                   manifestBuffer,
-                  walletKeyPair,
-                  env,
-                  nftStorageKey,
+                  nftStorageClient(walletKeyPair, env, nftStorageKey),
                 );
                 break;
               case StorageType.Ipfs:
