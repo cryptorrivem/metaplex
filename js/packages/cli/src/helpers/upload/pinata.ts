@@ -20,7 +20,7 @@ async function uploadMedia(media, jwt) {
     body: data,
   });
 
-  const json = await res.json();
+  const json: any = await res.json();
   return json.IpfsHash;
 }
 

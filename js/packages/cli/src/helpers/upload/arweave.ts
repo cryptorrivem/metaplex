@@ -102,7 +102,7 @@ export async function arweaveUpload(
   });
   data.append('file[]', manifestBuffer, 'metadata.json');
 
-  const result = await upload(data, manifest, index);
+  const result: any = await upload(data, manifest, index);
 
   const metadataFile = result.messages?.find(
     m => m.filename === 'manifest.json',
